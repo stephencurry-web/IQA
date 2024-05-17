@@ -1,0 +1,18 @@
+DATA:
+  DATASET: livec
+  BATCH_SIZE: 64
+  PATCH_NUM: 8
+  DATA_PATH: /data/IQA-Dataset/ChallengeDB_release
+SET:
+  COUNT: 1162
+MODEL:
+  TYPE: purevit
+  NAME: vit_small_pre
+  DROP_PATH_RATE: 0.0
+  VIT:
+    PATCH_SIZE: 16
+    EMBED_DIM: 384
+    DEPTH: 12
+    NUM_HEADS: 6
+    MLP_RATIO: 4
+    QKV_BIAS: True
