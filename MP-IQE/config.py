@@ -291,10 +291,10 @@ _C.ALPHA = 1.0
 _C.BETA = 0.0
 _C.num_scene = 9
 _C.num_dist = 11
-_C.visual = True
+_C.visual = False
 _C.only_smooth = False
-_C.scene = True
-_C.dist = True
+_C.scene = False
+_C.dist = False
 _C.data_percent = 0.8
 _C.print = False
 
