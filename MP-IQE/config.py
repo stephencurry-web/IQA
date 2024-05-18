@@ -292,7 +292,6 @@ _C.BETA = 0.0
 _C.num_scene = 9
 _C.num_dist = 11
 _C.visual = False
-_C.only_smooth = False
 _C.scene = False
 _C.dist = False
 _C.data_percent = 0.8

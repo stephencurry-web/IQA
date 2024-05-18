@@ -57,11 +57,7 @@ def stage1_train(config, model, data_loader, epochs, optimizer, lr_scheduler, lo
 
             fidelity_loss = loss_quality(pred_score, gt_score)
             smoothl1_loss = torch.nn.SmoothL1Loss()(pred_score, gt_score)
-            
-            if config.only_smooth:
-                loss = smoothl1_loss
-            else:
-                loss = global_loss + config.ALPHA * local_loss + config.BETA * smoothl1_loss
+            loss = global_loss + config.ALPHA * local_loss + config.BETA * smoothl1_loss
 
             loss_scaler.scale(loss).backward()
             loss_scaler.step(optimizer)
