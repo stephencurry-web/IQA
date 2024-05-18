@@ -373,8 +373,6 @@ def update_config(config, args, local_rank):
         config.STAGE1.EPOCHS = args.epoch
     if args.visual:
         config.visual = True
-    if args.only_smooth:
-        config.only_smooth = args.only_smooth
     if args.scene:
         config.scene = args.scene
     if args.dist:

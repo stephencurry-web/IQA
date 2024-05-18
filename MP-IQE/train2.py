@@ -21,10 +21,10 @@ from torchinfo import summary
 from IQA import IQA_build_loader
 from config import get_config
 from logger import create_logger
-from lr_scheduler import build_stage1_scheduler, WarmupMultiStepLR, build_stage2_scheduler
+from lr_scheduler import build_stage1_scheduler, WarmupMultiStepLR
 from models import Modify_CLIP, load_clip_to_cpu
 from IQA import CLIP_IQA_build_loader1, CLIP_IQA_build_loader2
-from optimizer import make_optimizer_1stage, make_optimizer_2stage
+from optimizer import make_optimizer_1stage
 from utils import (
     NativeScalerWithGradNormCount,
     auto_resume_helper,
@@ -129,7 +129,6 @@ def parse_option():
     parser.add_argument("--scene", action="store_true")
     parser.add_argument("--dist", action="store_true")
     parser.add_argument("--visual", action="store_true")
-    parser.add_argument("--only_smooth", action="store_true")
     parser.add_argument("--data_percent", type=float)
     parser.add_argument("--print", action="store_true")
     local_rank = int(os.environ["LOCAL_RANK"])
