@@ -13,13 +13,11 @@ from torch.cuda import amp
 import torch.distributed as dist
 from torch.nn import functional as F
 
-# from stage1_train import visual
 from loss import SupConLoss, Fidelity_Loss, Fidelity_Loss_distortion, Multi_Fidelity_Loss
 from scipy import stats
 from loss import loss_quality
 from IQA import build_dataloader, get_labels
 from labelsmooth_loss import CrossEntropyLabelSmooth
-from triplet_loss import TripletLoss
 
 
 def get_dataloader(config, dataset_name, logger):

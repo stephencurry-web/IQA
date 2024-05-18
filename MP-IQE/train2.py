@@ -186,8 +186,6 @@ if __name__ == "__main__":
     
     start_time = time.time()
     for i in range(rnum):
-        if config.print and i != 7:
-            continue
         logger.info(f"training num:{i}")
         if rnum > 1:
             config.defrost()
