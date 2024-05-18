@@ -79,41 +79,6 @@ def make_optimizer_1stage(config, model, logger):
     logger.info(f"number of params passed to optimizer: {n_params_optimizer}")
     return optimizer
 
-def make_optimizer_2stage(config, model):
-    params = []
-    for key, value in model.named_parameters():
-        if "text_encoder" in key:
-            value.requires_grad_(False)
-            continue
-        if "prompt_learner" in key:
-            value.requires_grad_(False)
-            continue
-        if "prompt_proj" in key:
-            value.requires_grad_(False)
-            continue
-        if "prompt_embeddings" in key:
-            value.requires_grad_(False)
-            continue
-        # if "bunch_embedding" in key:
-        #     value.requires_grad_(False)
-        #     continue
-
-        # if "adapter" in key:
-        #     value.requires_grad_(False)
-        #     continue
-        # if not value.requires_grad:
-        #     continue
-        params.append(value)
-    opt_lower = config.TRAIN.OPTIMIZER.NAME.lower()
-    optimizer = None
-    if opt_lower == 'sgd':
-        optimizer = optim.SGD(params, momentum=config.TRAIN.OPTIMIZER.MOMENTUM, nesterov=True,
-                              lr=config.STAGE2.BASE_LR, weight_decay=config.STAGE2.WEIGHT_DECAY)
-    elif opt_lower == 'adamw':
-        optimizer = optim.AdamW(params, eps=config.TRAIN.OPTIMIZER.EPS, betas=config.TRAIN.OPTIMIZER.BETAS,
-                                lr=config.STAGE2.BASE_LR, weight_decay=config.STAGE2.WEIGHT_DECAY)
-    return optimizer
-
 
 def set_weight_decay(model, skip_list=(), skip_keywords=()):
     has_decay = []

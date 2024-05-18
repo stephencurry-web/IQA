@@ -241,13 +241,6 @@ if __name__ == "__main__":
         # print(params.keys())  # 打印模型的参数键
         # print(params['deep_prompt_embeddings'])  # 打印 deep_prompt_embeddings 参数的值
         model.cuda()
-        # model_without_ddp = model
-        # model = torch.nn.parallel.DistributedDataParallel(
-        #     model,
-        #     device_ids=[config.LOCAL_RANK],
-        #     broadcast_buffers=False,
-        #     find_unused_parameters=True,
-        # )
 
         data_loader_train1 = CLIP_IQA_build_loader1(config)
         optimizer_1stage = make_optimizer_1stage(config, model, logger)

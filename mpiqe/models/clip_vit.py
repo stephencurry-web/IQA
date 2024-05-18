@@ -262,12 +262,6 @@ class Modify_CLIP(nn.Module):
                 global_features = self.get_scene_features()
             if self.dist:
                 local_features = self.get_dist_features()
-            # for i in range(9):
-            #     for j in range(i):
-            #         fea1 = global_features[i, :] / global_features[i, :].norm(dim=-1, keepdim=True)
-            #         fea2 = global_features[j, :] / global_features[j, :].norm(dim=-1, keepdim=True)
-            #         cosine_sim = fea1 @ fea2.t()
-            #         print("cosine_sim:", cosine_sim)
             if self.scene and self.dist:
                 query = torch.cat((global_features, local_features), dim=0).squeeze(dim=0).expand(B, -1, -1)
             elif self.scene:

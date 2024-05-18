@@ -6,20 +6,6 @@ from bisect import bisect_right
 from cosine_lr import CosineLRScheduler
 
 
-def build_stage2_scheduler(config, optimizer, n_iter_per_epoch):
-    warmup_steps = int(config.STAGE2.WARMUP_EPOCHS * n_iter_per_epoch)
-    decay_steps = int(config.STAGE2.DECAY_EPOCHS * n_iter_per_epoch)
-
-    lr_scheduler = StepLRScheduler(
-        optimizer,
-        decay_t=decay_steps,
-        decay_rate=config.STAGE2.DECAY_RATE,
-        warmup_lr_init=config.TRAIN.WARMUP_LR,
-        warmup_t=warmup_steps,
-        t_in_epochs=False,
-    )
-    return lr_scheduler
-
 
 def build_stage1_scheduler(optimizer, num_epochs, lr_min, warmup_lr_init, warmup_t, noise_range = None):
     lr_scheduler = CosineLRScheduler(
